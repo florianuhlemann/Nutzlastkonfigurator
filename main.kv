@@ -1,0 +1,40 @@
+<MainView>:
+	BoxLayout:
+		orientation: "vertical"
+		padding: 12
+		spacing: 6
+		Button:
+			text: "Aktuelle Konfiguration anzeigen"
+			font_size: 28
+			on_release: root.showConfig()
+		Button:
+			text: "Neue Konfiguration einstellen"
+			font_size: 28
+			on_release: root.setConfig()
+
+
+<ShowConfigView>:
+	BoxLayout:
+		orientation: "vertical"
+		padding: 12
+		spacing: 6
+		Label:
+			halign: "left"
+			valign: "middle"
+			text_size: self.size
+			text: "This is data 1\nthis is even more data\nand some more"
+		Button:
+			text: "Zurück zum Hauptmenü"
+			on_release: root.returnToMainMenu()
+
+
+<SetConfigView>:
+	BoxLayout:
+		orientation: "vertical"
+		padding: 12
+		spacing: 6
+		Button:
+			text: "Hello World 2"
+		Label:
+			text: "This is data 2"
+
