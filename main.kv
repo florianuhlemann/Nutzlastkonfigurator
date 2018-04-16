@@ -1,8 +1,8 @@
 <MainView>:
 	BoxLayout:
 		orientation: "vertical"
-		padding: 12
-		spacing: 6
+		padding: 0
+		spacing: 0
 		Button:
 			text: "Aktuelle Konfiguration anzeigen"
 			font_size: 28
@@ -16,25 +16,85 @@
 <ShowConfigView>:
 	BoxLayout:
 		orientation: "vertical"
-		padding: 12
-		spacing: 6
+		padding: 0
+		spacing: 0
+		Button:
+			size_y: 16
+			size_hint_y: 0.15
+			text: "Zurück zum Hauptmenü"
+			on_release: root.returnToMainMenu()
 		Label:
-			halign: "left"
+			id: ShowConfigViewLabel
+			halign: "center"
 			valign: "middle"
 			text_size: self.size
 			text: "This is data 1\nthis is even more data\nand some more"
-		Button:
-			text: "Zurück zum Hauptmenü"
-			on_release: root.returnToMainMenu()
 
 
 <SetConfigView>:
 	BoxLayout:
 		orientation: "vertical"
-		padding: 12
-		spacing: 6
+		padding: 0
+		spacing: 0
 		Button:
-			text: "Hello World 2"
-		Label:
-			text: "This is data 2"
+			size_y: 16
+			size_hint_y: 0.15
+			text: "Zurück zum Hauptmenü"
+			on_release: root.returnToMainMenu()
+		SetConfigAccordion:
+			id: SetConfigAccordion
+			orientation: "horizontal"
+			AccordionItem:
+				collapse: False
+				title: "Nutzlasttyp"
+				id: Nutzlasttyp
+				BoxLayout:
+					orientation: "vertical"
+					spacing: 0
+					Label:
+						text: "Bitte wählen Sie die Art der Nutzlast aus:"
+					BoxLayout:
+						orientation: "horizontal"
+						spacing: 0
+						Button:
+							text: "Flüssigkeit"
+							on_release:
+								Agrarprodukt.disabled = False
+								SetConfigAccordion.setAgrarprodukt("Flüssigkeit")
+								Agrarprodukt.collapse = False
+						Button:
+							text: "Feststoff"
+							on_release:
+								Agrarprodukt.disabled = False
+								SetConfigAccordion.setAgrarprodukt("Feststoff")
+								Agrarprodukt.collapse = False
+			AccordionItem:
+				disabled: True
+				title: "Agrarprodukt"
+				id: Agrarprodukt
+				SetConfigRecycleView:
+					viewclass: 'Button'
+					RecycleBoxLayout:
+						default_size: None, dp(56)
+						default_size_hint: 1, None
+						size_hint_y: None
+						height: self.minimum_height
+						orientation: 'vertical'
+
+			AccordionItem:
+				disabled: True
+				title: "Speichern"
+				id: Speichern
+				BoxLayout:
+					orientation: "vertical"
+					padding: 0
+					spacing: 0
+					Label:
+						halign: "left"
+						valign: "middle"
+						text_size: self.size
+						text: "This is data 1\nthis is even more data\nand some more"
+					Button:
+						text: "Zurück zum Hauptmenü"
+						on_release: root.returnToMainMenu()
 
