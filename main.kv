@@ -28,7 +28,15 @@
 			halign: "center"
 			valign: "middle"
 			text_size: self.size
-			text: "This is data 1\nthis is even more data\nand some more"
+			text: "hello"
+
+
+<SetConfigAgrarproduktBoxLayout>
+	orientation: "horizontal"
+	Label:
+		text: "Agrarprodukt Label"
+	Button:
+		text: "Agrarprodukt Button"
 
 
 <SetConfigView>:
@@ -73,7 +81,7 @@
 				title: "Agrarprodukt"
 				id: Agrarprodukt
 				SetConfigRecycleView:
-					viewclass: 'Button'
+					viewclass: 'SetConfigAgrarproduktBoxLayout'
 					RecycleBoxLayout:
 						default_size: None, dp(56)
 						default_size_hint: 1, None

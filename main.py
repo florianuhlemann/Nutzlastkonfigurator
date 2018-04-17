@@ -5,7 +5,7 @@ from kivy.config import Config
 from kivy.config import ConfigParser
 from kivy.event import EventDispatcher
 from kivy.lang import Builder
-from kivy.properties import NumericProperty, StringProperty
+from kivy.properties import NumericProperty, StringProperty, BooleanProperty
 from kivy.uix.accordion import Accordion
 from kivy.uix.button import Button
 from kivy.uix.dropdown import DropDown
@@ -56,25 +56,24 @@ class MainView(Screen):
 
 	def showConfig(self):
 		sm.switch_to(ShowConfigView())
-		pass
 
 	def setConfig(self):
 		sm.switch_to(SetConfigView())
-		pass
 
 
 class ShowConfigView(Screen):
 
+	def updateLabel(self):
+		self.varOne = "testing"
+
 	def returnToMainMenu(self):
 		sm.switch_to(MainView())
-		pass
 
 
 class SetConfigView(Screen):
 
 	def returnToMainMenu(self):
 		sm.switch_to(MainView())
-		pass
 
 
 class SetConfigAccordion(Accordion):
@@ -94,13 +93,17 @@ class SetConfigRecycleView(RecycleView):
 		super(SetConfigRecycleView, self).__init__(**kwargs)
 		os.chdir("Agrarprodukt")
 		for file in glob.glob("*.csv"):
-			self.data.append({"text" : "{}".format(file[:-4]), "on_release" : "root.returnToMainMenu()"})
+			self.data.append({"text" : "{}".format(file[:-4])})
+		print(self.data)
+
+	def returnToMainMenu(self):
+		sm.switch_to(MainView())
 
 
-class SetConfigAgraprodukteBoxLayout(BoxLayout):
+class SetConfigAgrarproduktBoxLayout(BoxLayout):
 
-	def __init__(self, **kwargs):
-		super(SetConfigAgraprodukteBoxLayout, self).__init__(**kwargs)
+	def returnText(self):
+		return "myText"
 
 
 class MainApp(App):
