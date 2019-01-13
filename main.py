@@ -91,7 +91,10 @@ class SetConfigRecycleView(RecycleView):
 
 	def __init__(self, **kwargs):
 		super(SetConfigRecycleView, self).__init__(**kwargs)
-		os.chdir("Agrarprodukt")
+		current_folder_path, current_folder_name = os.path.split(os.getcwd())
+		if current_folder_name != "Agrarprodukt":
+			os.chdir("Agrarprodukt")
+			pass
 		for file in glob.glob("*.csv"):
 			self.data.append({"text" : "{}".format(file[:-4])})
 		print(self.data)
